@@ -102,9 +102,9 @@ export function VehicleCard({ car, priority = false }: { car: Vehicle; priority?
               target="_blank"
               rel="noreferrer"
               aria-label={`${t.inventory.details}: ${name}`}
-              className="flex h-12 items-center gap-1 rounded-full bg-ink pr-1.5 pl-4 text-sm font-bold text-white transition duration-300 hover:bg-sun-600 hover:shadow-sun"
+              className="flex h-12 shrink-0 items-center gap-1 rounded-full bg-ink pr-1.5 pl-4 text-sm font-bold whitespace-nowrap text-white xl:pl-1.5 transition duration-300 hover:bg-sun-600 hover:shadow-sun"
             >
-              <span className="hidden min-[400px]:inline">{t.inventory.details}</span>
+              <span className="hidden min-[400px]:inline xl:hidden">{t.inventory.details}</span>
               <span className="grid size-9 place-items-center rounded-full bg-white/15 transition group-hover:rotate-45">
                 <Glyph icon={ArrowUpRight} size={18} strokeWidth={2.4} />
               </span>
