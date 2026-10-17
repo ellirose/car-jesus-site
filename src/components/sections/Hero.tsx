@@ -79,7 +79,7 @@ export function Hero() {
 
       <div className="container-x relative flex min-h-0 flex-1 flex-col gap-4 pb-4 sm:gap-5 lg:grid lg:grid-cols-12 lg:grid-rows-[minmax(0,1fr)_auto] lg:gap-x-10 lg:gap-y-0 lg:pb-6 xl:gap-x-14">
         {/* ── Copy ── */}
-        <div className="order-2 lg:order-none lg:col-span-5 lg:row-start-1 lg:self-center lg:pb-16">
+        <div className="order-2 lg:order-none lg:col-span-6 lg:row-start-1 lg:self-center lg:pb-16 xl:col-span-5 2xl:col-span-6">
           <motion.span
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -93,7 +93,7 @@ export function Hero() {
             {t.hero.eyebrow}
           </motion.span>
 
-          <h1 className="mt-3 font-display text-[clamp(2rem,min(4.8vw,6.6vh),4.4rem)] leading-[1.02] font-bold tracking-[-0.03em] text-balance text-ink sm:mt-5 lg:mt-6">
+          <h1 className="mt-3 font-display text-[clamp(2rem,min(4.6vw,6.6vh),4.1rem)] leading-[1.04] font-bold tracking-[-0.03em] text-balance text-ink sm:mt-5 lg:mt-6">
             <motion.span
               className="block"
               initial={{ opacity: 0, y: 30 }}
@@ -103,30 +103,20 @@ export function Hero() {
               {t.hero.titleA}
             </motion.span>
             <motion.span
-              className="relative inline-block"
+              className="mt-1 block leading-[1.2]"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.22, ease }}
             >
-              <span className="text-gradient-sun">{t.hero.titleB}</span>
-              <svg viewBox="0 0 300 16" preserveAspectRatio="none" className="absolute -bottom-2 left-0 h-3 w-full" aria-hidden>
-                <motion.path
-                  d="M3 11C60 4 140 2 297 8"
-                  fill="none"
-                  stroke="url(#swoosh)"
-                  strokeWidth="5"
-                  strokeLinecap="round"
-                  initial={{ pathLength: 0 }}
-                  animate={{ pathLength: 1 }}
-                  transition={{ duration: 1.2, delay: 0.8, ease }}
-                />
-                <defs>
-                  <linearGradient id="swoosh" x1="0" x2="1">
-                    <stop offset="0" stopColor="#ffc24b" />
-                    <stop offset="1" stopColor="#f26b12" />
-                  </linearGradient>
-                </defs>
-              </svg>
+              {/* underline follows each wrapped line (box-decoration-clone) and draws in */}
+              <motion.span
+                className="bg-[linear-gradient(90deg,#ffc24b,#f26b12)] box-decoration-clone bg-bottom-left bg-no-repeat pb-1"
+                initial={{ backgroundSize: "0% 5px" }}
+                animate={{ backgroundSize: "100% 5px" }}
+                transition={{ duration: 1.2, delay: 0.8, ease }}
+              >
+                <span className="text-gradient-sun box-decoration-clone">{t.hero.titleB}</span>
+              </motion.span>
             </motion.span>
           </h1>
 
@@ -189,7 +179,7 @@ export function Hero() {
           initial={{ opacity: 0, scale: 0.96, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1.1, ease }}
-          className="relative order-1 min-h-0 flex-1 lg:order-none lg:col-span-7 lg:row-start-1"
+          className="relative order-1 min-h-0 flex-1 lg:order-none lg:col-span-6 lg:row-start-1 xl:col-span-7 2xl:col-span-6"
         >
           <div className="absolute inset-0 overflow-hidden rounded-[2rem] rounded-tl-[5rem] shadow-lift ring-1 ring-white/60 lg:rounded-[2.75rem] lg:rounded-tl-[9rem]">
             <video
