@@ -49,7 +49,7 @@ export function HeroSearch() {
   return (
     <form onSubmit={onSubmit} role="search" aria-label={t.search.title} className="relative">
       {/* folder-tab title */}
-      <div className="glass absolute -top-10 left-6 hidden items-center gap-2 rounded-t-2xl rounded-b-none border-b-0 px-5 pt-2.5 pb-3 text-sm font-bold text-ink shadow-none lg:flex">
+      <div className="glass absolute -top-10 left-6 hidden items-center gap-2 rounded-t-2xl rounded-b-none border-b-0 px-5 pt-2.5 pb-3 text-sm font-bold text-ink shadow-none lg:flex short:lg:hidden">
         <span className="grid size-5 place-items-center rounded-full bg-gradient-sun text-white">
           <Glyph icon={Search} size={11} strokeWidth={3} />
         </span>
