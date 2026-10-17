@@ -17,7 +17,7 @@ export function About() {
   const { t, formatNumber } = useI18n();
 
   return (
-    <section id="nosotros" className="relative isolate overflow-hidden py-20 lg:py-32">
+    <section id="nosotros" className="relative isolate overflow-hidden pt-20 pb-10 lg:pt-28 lg:pb-16">
       <div aria-hidden className="absolute -bottom-40 left-1/4 -z-10 size-[34rem] rounded-full bg-sun-100/70 blur-[120px]" />
       <div className="container-x grid items-center gap-16 lg:grid-cols-2 lg:gap-24">
         {/* collage */}

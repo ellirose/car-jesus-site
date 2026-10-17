@@ -27,7 +27,7 @@ export function WhySell() {
   const { t } = useI18n();
 
   return (
-    <section className="relative isolate overflow-hidden pt-6 pb-24 lg:pb-32">
+    <section className="relative isolate overflow-hidden pt-6 pb-16 lg:pb-20">
       <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-b from-sun-50 to-canvas" />
       <div className="container-x">
         <SectionHeading eyebrow={t.why.eyebrow} title={t.why.title} subtitle={t.why.subtitle} />

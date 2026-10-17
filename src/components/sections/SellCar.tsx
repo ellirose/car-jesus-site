@@ -26,7 +26,7 @@ export function SellCar() {
   const { t } = useI18n();
 
   return (
-    <section id="vender" className="relative isolate overflow-hidden py-20 lg:py-32">
+    <section id="vender" className="relative isolate overflow-hidden pt-12 pb-20 lg:pt-16 lg:pb-28">
       <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-b from-canvas via-sun-50 to-sun-50" />
       <div aria-hidden className="absolute top-1/4 -right-40 -z-10 size-[36rem] rounded-full bg-sun-200/50 blur-[120px]" />
 
