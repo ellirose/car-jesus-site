@@ -48,13 +48,13 @@ export function Inventory() {
       {/* curved white backdrop that softly separates this section */}
       <div aria-hidden className="absolute inset-x-0 top-0 bottom-0 -z-10 rounded-t-[3rem] bg-gradient-to-b from-white via-white to-canvas sm:rounded-t-[5rem]" />
       <div className="container-x">
-        <div className="flex flex-col gap-10 xl:flex-row xl:items-end xl:justify-between">
+        <div className="flex flex-col gap-10 2xl:flex-row 2xl:items-end 2xl:justify-between">
           <SectionHeading
             align="left"
             eyebrow={t.inventory.eyebrow}
             title={t.inventory.title}
             subtitle={t.inventory.subtitle}
-            className="xl:max-w-xl"
+            className="2xl:max-w-xl"
           />
 
           <div role="tablist" aria-label={t.search.type} className="flex flex-wrap gap-2 rounded-[2rem] bg-canvas p-2 ring-1 ring-line">
