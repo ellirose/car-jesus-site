@@ -6,30 +6,11 @@ import { ArrowRight, BadgeCheck, Pause, Play, ShieldCheck, Star } from "lucide";
 import { Glyph } from "../icons/Glyph";
 import { GlassIcon } from "../icons/GlassIcon";
 import { ButtonLink } from "../ui/Button";
+import { RotatingBadge } from "../ui/RotatingBadge";
 import { HeroSearch } from "./HeroSearch";
 import { useI18n } from "@/lib/i18n/provider";
 
 const ease = [0.16, 1, 0.3, 1] as const;
-
-function RotatingRing({ text, className = "" }: { text: string; className?: string }) {
-  const chars = text.repeat(2).slice(0, 52);
-  return (
-    <div className={`grid place-items-center ${className}`}>
-      <div className="absolute inset-0 rounded-full glass" />
-      <svg viewBox="0 0 120 120" className="absolute inset-0 size-full animate-spin-slow">
-        <defs>
-          <path id="hero-ring" d="M60 60m-46 0a46 46 0 1 1 92 0a46 46 0 1 1 -92 0" />
-        </defs>
-        <text className="fill-ink font-display text-[9.4px] font-bold tracking-[0.12em]">
-          <textPath href="#hero-ring">{chars}</textPath>
-        </text>
-      </svg>
-      <span className="relative grid size-[44%] place-items-center rounded-full bg-gradient-sun text-white shadow-sun">
-        <Glyph icon={BadgeCheck} size="55%" strokeWidth={2.2} />
-      </span>
-    </div>
-  );
-}
 
 function CreditRing({ value }: { value: number }) {
   const r = 22;
@@ -235,10 +216,9 @@ export function Hero() {
             <Glyph icon={playing ? Pause : Play} size={20} strokeWidth={2.4} />
           </button>
 
-          <RotatingRing
-            text={t.hero.ring}
-            className="absolute top-3 right-3 size-24 lg:top-6 lg:right-6 lg:size-32"
-          />
+          <RotatingBadge text={t.hero.ring} className="absolute top-3 right-3 size-24 lg:top-6 lg:right-6 lg:size-32">
+            <Glyph icon={BadgeCheck} size="55%" strokeWidth={2.2} />
+          </RotatingBadge>
 
           {/* floating warranty card */}
           <motion.div
