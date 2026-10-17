@@ -101,6 +101,7 @@ const es = {
     saved: "Guardado",
     empty: "No encontramos autos con esos filtros.",
     reset: "Limpiar filtros",
+    result: "auto disponible",
     results: "autos disponibles",
     viewAll: "Ver todo el inventario",
     whatsapp: "Hola, me interesa el {car} que vi en su sitio web. ¿Sigue disponible?",

@@ -103,6 +103,7 @@ const en: Dictionary = {
     saved: "Saved",
     empty: "We couldn't find cars matching those filters.",
     reset: "Clear filters",
+    result: "car available",
     results: "cars available",
     viewAll: "See full inventory",
     whatsapp: "Hi, I'm interested in the {car} I saw on your website. Is it still available?",

@@ -93,7 +93,8 @@ export function Inventory() {
 
         <div className="mt-8 flex min-h-10 flex-wrap items-center gap-3">
           <p className="text-sm font-semibold text-ink-soft">
-            <span className="font-display text-lg font-bold text-ink">{results.length}</span> {t.inventory.results}
+            <span className="font-display text-lg font-bold text-ink">{results.length}</span>{" "}
+            {results.length === 1 ? t.inventory.result : t.inventory.results}
           </p>
           {active.map((a) => (
             <button
