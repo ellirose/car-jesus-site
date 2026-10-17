@@ -16,9 +16,9 @@ export function AnimatedNumber({ value, format, countUp = false, duration = 0.9,
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
   const mv = useMotionValue(countUp ? 0 : value);
-  const [display, setDisplay] = useState(() => format(countUp ? 0 : value));
+  const [current, setCurrent] = useState(countUp ? 0 : value);
 
-  useMotionValueEvent(mv, "change", (v) => setDisplay(format(v)));
+  useMotionValueEvent(mv, "change", setCurrent);
 
   useEffect(() => {
     if (countUp && !inView) return;
@@ -26,14 +26,9 @@ export function AnimatedNumber({ value, format, countUp = false, duration = 0.9,
     return () => controls.stop();
   }, [value, inView, countUp, duration, mv]);
 
-  // Re-format when the formatter changes (e.g. locale switch) without re-animating.
-  useEffect(() => {
-    setDisplay(format(mv.get()));
-  }, [format, mv]);
-
   return (
     <span ref={ref} className={`tabular-nums ${className ?? ""}`}>
-      {display}
+      {format(current)}
     </span>
   );
 }
