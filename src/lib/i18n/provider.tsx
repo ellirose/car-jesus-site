@@ -39,9 +39,7 @@ function detectLocale(): Locale | null {
   } catch {
     /* storage unavailable */
   }
-  const nav = navigator.language?.toLowerCase() ?? "";
-  if (nav.startsWith("pt")) return "pt";
-  if (nav.startsWith("en")) return "en";
+  // Spanish is the primary language: only switch on an explicit choice.
   return null;
 }
 
