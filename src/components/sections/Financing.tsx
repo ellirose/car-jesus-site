@@ -68,7 +68,7 @@ export function Financing() {
   const pct = (v: number, min: number, max: number) => `${((v - min) / (max - min)) * 100}%`;
 
   return (
-    <section id="financiamiento" className="relative isolate overflow-hidden py-20 lg:py-32">
+    <section id="financiamiento" className="relative isolate overflow-hidden py-20 lg:py-28">
       <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-b from-canvas via-azure-50 to-canvas" />
       <div aria-hidden className="absolute top-20 -left-40 -z-10 size-[30rem] rounded-full bg-azure-100 blur-[110px]" />
 
@@ -109,7 +109,7 @@ export function Financing() {
           <span className="absolute top-2 right-2 z-10 grid size-14 place-items-center rounded-full bg-gradient-sun text-white shadow-sun">
             <Glyph icon={Percent} size={24} strokeWidth={2.6} />
           </span>
-          <div className="clip-chamfer rounded-[2.5rem] bg-white p-6 sm:p-10">
+          <div className="clip-chamfer rounded-[2.5rem] bg-white p-6 pt-16 sm:p-10 sm:pt-20">
             <div className="space-y-8">
               <div>
                 <div className="flex items-baseline justify-between gap-4">
