@@ -57,7 +57,7 @@ export function Inventory() {
             className="2xl:max-w-xl"
           />
 
-          <div role="tablist" aria-label={t.search.type} className="flex flex-wrap gap-2 rounded-[2rem] bg-canvas p-2 ring-1 ring-line">
+          <div role="tablist" aria-label={t.search.type} className="-mx-4 flex gap-2 overflow-x-auto px-4 py-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:rounded-[2rem] sm:bg-canvas sm:p-2 sm:ring-1 sm:ring-line [&::-webkit-scrollbar]:hidden">
             {chips.map((c) => {
               const selected = filters.type === c.key;
               return (
@@ -66,7 +66,7 @@ export function Inventory() {
                   role="tab"
                   aria-selected={selected}
                   onClick={() => setFilters({ type: c.key })}
-                  className={`relative flex items-center gap-2 rounded-full px-4 py-2.5 text-[15px] font-bold transition-colors sm:px-5 ${
+                  className={`relative flex shrink-0 items-center gap-2 rounded-full px-4 py-2.5 text-[15px] font-bold transition-colors max-sm:bg-white max-sm:shadow-soft sm:px-5 ${
                     selected ? "text-white" : "text-ink-soft hover:text-ink"
                   }`}
                 >
