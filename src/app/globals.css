@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* Viewport-height variants keep the hero inside a single screen */
+@custom-variant short (@media (max-height: 820px));
+@custom-variant tiny (@media (max-height: 700px));
+
 /* ───────────────────────── Design tokens ───────────────────────── */
 @theme {
   --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
