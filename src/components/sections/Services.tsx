@@ -43,10 +43,10 @@ const toneCycle: Tone[] = ["sun", "azure", "mint", "berry"];
 
 /** Alternating organic outlines so the grid never reads as a wall of rectangles. */
 const shapes = [
-  "rounded-[2.75rem_1.25rem_2.75rem_1.25rem]",
-  "rounded-[1.25rem_2.75rem_1.25rem_2.75rem]",
-  "rounded-[2.75rem]",
-  "rounded-[2.75rem_2.75rem_1.25rem_2.75rem]",
+  "rounded-[3.5rem_0.75rem_3.5rem_0.75rem]",
+  "rounded-[0.75rem_3.5rem_0.75rem_3.5rem]",
+  "rounded-[3.5rem]",
+  "rounded-[3.5rem_3.5rem_0.75rem_3.5rem]",
 ];
 
 const FEATURED = 0;
@@ -57,7 +57,7 @@ export function Services() {
   const items = t.services.items;
 
   return (
-    <section id="servicios" className="relative py-20 lg:py-28">
+    <section id="servicios" className="relative pt-10 pb-20 lg:pt-14 lg:pb-28">
       <div aria-hidden className="pointer-events-none absolute top-40 -left-32 size-96 rounded-full bg-azure-100/70 blur-3xl" />
       <div className="container-x relative">
         <SectionHeading eyebrow={t.services.eyebrow} title={t.services.title} subtitle={t.services.subtitle} />
