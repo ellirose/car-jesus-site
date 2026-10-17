@@ -102,7 +102,7 @@ export function Header() {
           <div
             className={`mx-auto transition-all duration-500 ${
               scrolled
-                ? "glass max-w-[1400px] rounded-[1.75rem] shadow-lift"
+                ? "max-w-[1400px] rounded-[1.75rem] bg-white/88 shadow-lift ring-1 ring-white backdrop-blur-2xl backdrop-saturate-150"
                 : "max-w-[1440px] rounded-none border border-transparent"
             }`}
           >
