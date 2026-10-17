@@ -24,7 +24,7 @@ export function Footer() {
 
   return (
     <footer className="relative isolate overflow-hidden bg-sand pt-20">
-      <div aria-hidden className="absolute -top-32 left-1/2 -z-10 h-64 w-[80%] -translate-x-1/2 rounded-full bg-sun-200/50 blur-[100px]" />
+      <div aria-hidden className="absolute top-24 left-1/2 -z-10 h-56 w-[70%] -translate-x-1/2 rounded-full bg-sun-200/40 blur-[110px]" />
 
       <div className="container-x">
         {/* CTA strip */}
