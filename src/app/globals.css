@@ -1,26 +1,208 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ───────────────────────── Design tokens ───────────────────────── */
+@theme {
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-heading), var(--font-body), ui-sans-serif, sans-serif;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Ink (text) — never used as a large background */
+  --color-ink: #13213a;
+  --color-ink-soft: #46546d;
+  --color-ink-mute: #7c879b;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* Surfaces */
+  --color-canvas: #f7f5f1;
+  --color-sand: #f1ece3;
+  --color-line: #e6e0d5;
+  --color-mist: #eef3fd;
+
+  /* Solar accent */
+  --color-sun-50: #fff7ec;
+  --color-sun-100: #ffecd2;
+  --color-sun-200: #ffd8a6;
+  --color-sun-300: #ffc070;
+  --color-sun-400: #ffa53f;
+  --color-sun-500: #ff8a1f;
+  --color-sun-600: #f26b12;
+  --color-sun-700: #c9510d;
+
+  /* Azure accent */
+  --color-azure-50: #eef4ff;
+  --color-azure-100: #dbe7ff;
+  --color-azure-300: #8db2ff;
+  --color-azure-500: #3f7bfa;
+  --color-azure-600: #2c60e0;
+
+  /* Support */
+  --color-mint-400: #34d3a6;
+  --color-mint-500: #14b88b;
+  --color-berry-400: #ff6f91;
+
+  --radius-4xl: 2rem;
+  --radius-5xl: 2.75rem;
+
+  --shadow-soft: 0 1px 2px rgb(19 33 58 / 0.04), 0 8px 24px -8px rgb(19 33 58 / 0.1), 0 24px 60px -24px rgb(19 33 58 / 0.14);
+  --shadow-lift: 0 2px 4px rgb(19 33 58 / 0.04), 0 18px 40px -12px rgb(19 33 58 / 0.18), 0 50px 100px -40px rgb(19 33 58 / 0.22);
+  --shadow-sun: 0 10px 30px -8px rgb(255 122 26 / 0.55), 0 2px 6px rgb(242 107 18 / 0.25);
+  --shadow-azure: 0 10px 30px -8px rgb(63 123 250 / 0.45);
+  --shadow-inner-glass: inset 0 1px 0 rgb(255 255 255 / 0.85), inset 0 -1px 0 rgb(255 255 255 / 0.25);
+
+  --animate-marquee: marquee var(--marquee-duration, 40s) linear infinite;
+  --animate-marquee-reverse: marquee-reverse var(--marquee-duration, 40s) linear infinite;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-float-slow: float 10s ease-in-out infinite;
+  --animate-spin-slow: spin 24s linear infinite;
+  --animate-pulse-ring: pulse-ring 2.4s cubic-bezier(0.2, 0.7, 0.3, 1) infinite;
+  --animate-shimmer: shimmer 3.2s ease-in-out infinite;
+
+  @keyframes marquee {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-50%, 0, 0); }
+  }
+  @keyframes marquee-reverse {
+    from { transform: translate3d(-50%, 0, 0); }
+    to { transform: translate3d(0, 0, 0); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translate3d(0, 0, 0) rotate(var(--float-rotate, 0deg)); }
+    50% { transform: translate3d(0, -12px, 0) rotate(var(--float-rotate, 0deg)); }
+  }
+  @keyframes pulse-ring {
+    0% { transform: scale(0.85); opacity: 0.7; }
+    100% { transform: scale(1.9); opacity: 0; }
+  }
+  @keyframes shimmer {
+    0% { transform: translateX(-120%) skewX(-18deg); }
+    60%, 100% { transform: translateX(220%) skewX(-18deg); }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ───────────────────────── Base ───────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    background: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--color-sun-200);
+    color: var(--color-ink);
+  }
+  section[id] {
+    scroll-margin-top: 6rem;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-azure-500);
+    outline-offset: 3px;
+    border-radius: 12px;
+  }
+}
+
+/* ───────────────────────── Utilities ───────────────────────── */
+@utility container-x {
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  @media (width >= 40rem) { padding-inline: 1.5rem; }
+  @media (width >= 64rem) { padding-inline: 2.5rem; }
+}
+
+@utility text-gradient-sun {
+  background: linear-gradient(100deg, #ffb13d 0%, #ff7a1a 45%, #e8461b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility bg-gradient-sun {
+  background-image: linear-gradient(135deg, #ffc24b 0%, #ff8a1f 48%, #f0561a 100%);
+}
+
+@utility bg-gradient-azure {
+  background-image: linear-gradient(135deg, #8db2ff 0%, #3f7bfa 55%, #2a55d6 100%);
+}
+
+/* Frosted glass surface */
+@utility glass {
+  background: linear-gradient(135deg, rgb(255 255 255 / 0.78), rgb(255 255 255 / 0.5));
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid rgb(255 255 255 / 0.7);
+  box-shadow: var(--shadow-inner-glass), var(--shadow-soft);
+}
+
+/* Subtle grain / dot texture */
+@utility bg-dots {
+  background-image: radial-gradient(rgb(19 33 58 / 0.09) 1px, transparent 1.2px);
+  background-size: 22px 22px;
+}
+
+/* Ticket-style notches on both sides of a card at --notch-y */
+@utility mask-ticket {
+  --notch: 14px;
+  -webkit-mask:
+    radial-gradient(circle var(--notch) at 0 var(--notch-y, 62%), #0000 98%, #000) left / 51% 100% no-repeat,
+    radial-gradient(circle var(--notch) at 100% var(--notch-y, 62%), #0000 98%, #000) right / 51% 100% no-repeat;
+  mask:
+    radial-gradient(circle var(--notch) at 0 var(--notch-y, 62%), #0000 98%, #000) left / 51% 100% no-repeat,
+    radial-gradient(circle var(--notch) at 100% var(--notch-y, 62%), #0000 98%, #000) right / 51% 100% no-repeat;
+}
+
+/* Chamfered corner (top-right) */
+@utility clip-chamfer {
+  clip-path: polygon(0 0, calc(100% - 64px) 0, 100% 64px, 100% 100%, 0 100%);
+}
+
+@utility mask-fade-x {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+@utility perspective-distant {
+  perspective: 1400px;
+}
+
+@utility preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* Animated glass icon parts (see components/icons/GlassIcon.tsx) */
+.gi-plate,
+.gi-panel,
+.gi-glyph,
+.gi-spark {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.group:hover .gi-plate {
+  transform: rotate(-14deg) scale(1.08) translate(4%, -4%);
+}
+.group:hover .gi-panel {
+  transform: translate(-3%, 3%);
+}
+.group:hover .gi-glyph {
+  transform: translate(-3%, 3%) scale(1.06);
+}
+.gi-spark {
+  animation: gi-twinkle 2.8s ease-in-out infinite;
+}
+@keyframes gi-twinkle {
+  0%, 100% { transform: scale(0.6) rotate(0deg); opacity: 0.55; }
+  50% { transform: scale(1.15) rotate(45deg); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }
