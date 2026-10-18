@@ -65,7 +65,7 @@ export function Services() {
   const items = t.services.items;
 
   return (
-    <section id="servicios" className="relative pt-10 pb-20 lg:pt-14 lg:pb-28">
+    <section id="servicios" className="relative pt-10 pb-6 lg:pt-14 lg:pb-10">
       <div className="container-x relative">
         <SectionHeading eyebrow={t.services.eyebrow} title={t.services.title} subtitle={t.services.subtitle} />
 

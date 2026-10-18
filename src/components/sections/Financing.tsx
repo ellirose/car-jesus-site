@@ -59,7 +59,7 @@ export function Financing() {
   const pct = (v: number, min: number, max: number) => `${((v - min) / (max - min)) * 100}%`;
 
   return (
-    <section id="financiamiento" className="relative isolate overflow-hidden py-20 lg:py-28">
+    <section id="financiamiento" className="relative isolate overflow-hidden pt-6 pb-10 lg:pt-8 lg:pb-14">
       <div aria-hidden className="absolute inset-0 -z-10 bg-white" />
       <FlowLines className="absolute inset-x-0 bottom-0 -z-10 h-2/3 w-full opacity-60" color="var(--color-aqua-100)" glow="var(--color-aqua-500)" />
 
