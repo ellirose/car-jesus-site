@@ -7,8 +7,10 @@ import { Glyph } from "./icons/Glyph";
 import { LogoMark } from "./icons/LogoMark";
 import { SocialIcon } from "./icons/BrandLogo";
 import { LanguageToggle } from "./LanguageToggle";
+import { FlowLines } from "./ui/FlowLines";
 import { useI18n } from "@/lib/i18n/provider";
 import { site, whatsappLink } from "@/lib/site";
+import { lockScroll } from "@/lib/smooth-scroll";
 
 const sections = [
   { id: "inicio", key: "home" },
@@ -27,7 +29,7 @@ export function Logo({ compact = false }: { compact?: boolean }) {
       </span>
       <span className="leading-none">
         <span className="block font-display text-[1.3rem] font-extrabold tracking-tight text-ink sm:text-[1.6rem]">Solara</span>
-        <span className="mt-1 block text-[0.6rem] font-bold tracking-[0.42em] text-sun-600 sm:text-[0.65rem]">AUTOS</span>
+        <span className="mt-1 block text-[0.6rem] font-bold tracking-[0.42em] text-brand-600 sm:text-[0.65rem]">AUTOS</span>
       </span>
     </a>
   );
@@ -58,7 +60,7 @@ export function Header() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
+    lockScroll(open);
   }, [open]);
 
   return (
@@ -74,22 +76,22 @@ export function Header() {
           <div className="container-x flex h-10 items-center justify-between text-[13px] font-medium text-ink-soft">
             <div className="flex items-center gap-6">
               <span className="flex items-center gap-2">
-                <Glyph icon={Clock} size={15} className="text-sun-600" />
+                <Glyph icon={Clock} size={15} className="text-brand-600" />
                 {t.topbar.hours}
               </span>
               <span className="flex items-center gap-2">
-                <Glyph icon={MapPin} size={15} className="text-sun-600" />
+                <Glyph icon={MapPin} size={15} className="text-brand-600" />
                 {t.topbar.location}
               </span>
             </div>
             <div className="flex items-center gap-5">
               <a href={site.phoneHref} className="flex items-center gap-2 transition hover:text-ink">
-                <Glyph icon={Phone} size={15} className="text-sun-600" />
+                <Glyph icon={Phone} size={15} className="text-brand-600" />
                 {site.phone}
               </a>
               <span className="h-4 w-px bg-ink/15" />
               {(["instagram", "facebook", "tiktok"] as const).map((s) => (
-                <a key={s} href={site.socials[s]} target="_blank" rel="noreferrer" aria-label={s} className="transition hover:text-sun-600">
+                <a key={s} href={site.socials[s]} target="_blank" rel="noreferrer" aria-label={s} className="transition hover:text-brand-600">
                   <SocialIcon name={s} className="size-4" />
                 </a>
               ))}
@@ -123,13 +125,13 @@ export function Header() {
                           href={`#${s.id}`}
                           aria-current={isActive ? "true" : undefined}
                           className={`relative block rounded-full px-3.5 py-2.5 text-[17px] font-bold tracking-tight transition-colors duration-300 2xl:px-5 ${
-                            isActive ? "text-ink" : "text-ink-soft hover:text-sun-600"
+                            isActive ? "text-ink" : "text-ink-soft hover:text-brand-600"
                           }`}
                         >
                           {isActive && (
                             <motion.span
                               layoutId="nav-pill"
-                              className="absolute inset-0 rounded-full bg-white shadow-soft ring-1 ring-sun-200/80"
+                              className="absolute inset-0 rounded-full bg-white shadow-soft ring-1 ring-brand-200/80"
                               transition={{ type: "spring", stiffness: 380, damping: 32 }}
                             />
                           )}
@@ -137,7 +139,7 @@ export function Header() {
                           {isActive && (
                             <motion.span
                               layoutId="nav-dot"
-                              className="absolute -bottom-0.5 left-1/2 size-1.5 -translate-x-1/2 rounded-full bg-sun-500"
+                              className="absolute -bottom-0.5 left-1/2 size-1.5 -translate-x-1/2 rounded-full bg-brand-500"
                             />
                           )}
                         </a>
@@ -154,7 +156,7 @@ export function Header() {
                   href={whatsappLink(t.fabMessage)}
                   target="_blank"
                   rel="noreferrer"
-                  className="group/btn relative hidden h-14 items-center gap-2.5 overflow-hidden rounded-full bg-gradient-sun px-4 text-[17px] font-bold text-white shadow-sun transition hover:-translate-y-0.5 lg:flex 2xl:px-6"
+                  className="group/btn relative hidden h-14 items-center gap-2.5 overflow-hidden rounded-full bg-brand-600 px-4 text-[17px] font-bold text-white shadow-brand transition hover:-translate-y-0.5 lg:flex 2xl:px-6"
                 >
                   <SocialIcon name="whatsapp" className="size-6" />
                   <span className="hidden 2xl:inline">{t.nav.cta}</span>
@@ -191,7 +193,7 @@ export function Header() {
               transition={{ type: "spring", stiffness: 260, damping: 30 }}
               className="absolute inset-y-0 right-0 flex w-full max-w-md flex-col overflow-y-auto rounded-l-[2.5rem] bg-canvas/95 p-6 shadow-lift backdrop-blur-xl sm:p-8"
             >
-              <div className="pointer-events-none absolute -top-24 -right-24 size-72 rounded-full bg-sun-300/40 blur-3xl" />
+              <FlowLines className="absolute inset-0 size-full opacity-70" />
               <div className="relative flex items-center justify-between">
                 <Logo compact />
                 <button
@@ -220,7 +222,7 @@ export function Header() {
                         }`}
                       >
                         {t.nav[s.key]}
-                        <span className={`size-2.5 rounded-full ${active === s.id ? "bg-sun-500" : "bg-transparent"}`} />
+                        <span className={`size-2.5 rounded-full ${active === s.id ? "bg-brand-500" : "bg-transparent"}`} />
                       </a>
                     </motion.li>
                   ))}
@@ -232,7 +234,7 @@ export function Header() {
                   href={whatsappLink(t.fabMessage)}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex h-16 items-center justify-center gap-3 rounded-full bg-gradient-sun text-lg font-bold text-white shadow-sun"
+                  className="flex h-16 items-center justify-center gap-3 rounded-full bg-brand-600 text-lg font-bold text-white shadow-brand"
                 >
                   <SocialIcon name="whatsapp" className="size-6" />
                   {t.nav.cta}
