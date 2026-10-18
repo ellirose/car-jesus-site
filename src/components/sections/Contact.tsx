@@ -15,10 +15,10 @@ import { site, whatsappLink } from "@/lib/site";
 function MapArt() {
   return (
     <svg viewBox="0 0 600 260" preserveAspectRatio="xMidYMid slice" className="absolute inset-0 size-full" aria-hidden>
-      <rect width="600" height="260" fill="#eef0ea" />
+      <rect width="600" height="260" fill="#edf2f8" />
       <path d="M420 0c-30 60 10 110 80 120s100 60 100 60V0Z" fill="#cfe3ff" />
-      <ellipse cx="110" cy="200" rx="90" ry="50" fill="#d6eed9" />
-      <ellipse cx="300" cy="40" rx="60" ry="30" fill="#d6eed9" />
+      <ellipse cx="110" cy="200" rx="90" ry="50" fill="#d5f1ea" />
+      <ellipse cx="300" cy="40" rx="60" ry="30" fill="#d5f1ea" />
       <g stroke="#fff" strokeLinecap="round" fill="none">
         <path d="M-10 150C120 140 200 120 300 130s200 40 320 20" strokeWidth="18" />
         <path d="M230 -10c10 80 20 170 0 280" strokeWidth="14" />
@@ -26,7 +26,7 @@ function MapArt() {
         <path d="M80 -10v280M470 -10c-10 90 10 180-10 280M360 -10v280" strokeWidth="7" />
         <path d="M-10 220h620" strokeWidth="6" />
       </g>
-      <path d="M-10 150C120 140 200 120 300 130s200 40 320 20" stroke="#ffc070" strokeWidth="2" strokeDasharray="10 10" fill="none" />
+      <path d="M-10 150C120 140 200 120 300 130s200 40 320 20" stroke="#95b6ff" strokeWidth="2" strokeDasharray="10 10" fill="none" />
     </svg>
   );
 }
@@ -45,10 +45,10 @@ export function Contact() {
   const [status, setStatus] = useState<"idle" | "sending" | "done">("idle");
 
   const cards: { icon: IconNode; tone: Tone; title: string; lines: string[]; href?: string }[] = [
-    { icon: MapPin, tone: "sun", title: t.contact.visit, lines: [site.address], href: site.mapsUrl },
-    { icon: Phone, tone: "azure", title: t.contact.call, lines: [site.phone], href: site.phoneHref },
+    { icon: MapPin, tone: "brand", title: t.contact.visit, lines: [site.address], href: site.mapsUrl },
+    { icon: Phone, tone: "aqua", title: t.contact.call, lines: [site.phone], href: site.phoneHref },
     { icon: Mail, tone: "mint", title: t.contact.write, lines: [site.email], href: `mailto:${site.email}` },
-    { icon: Clock, tone: "berry", title: t.contact.hours, lines: t.contact.hoursLines },
+    { icon: Clock, tone: "iris", title: t.contact.hours, lines: t.contact.hoursLines },
   ];
 
   function onSubmit(e: FormEvent<HTMLFormElement>) {
@@ -75,11 +75,11 @@ export function Contact() {
   }
 
   const inputCls =
-    "w-full rounded-2xl bg-canvas px-5 py-4 text-[15px] font-semibold text-ink ring-1 ring-line transition outline-none placeholder:font-medium placeholder:text-ink-mute focus:bg-white focus:ring-2 focus:ring-sun-400";
+    "w-full rounded-2xl bg-canvas px-5 py-4 text-[15px] font-semibold text-ink ring-1 ring-line transition outline-none placeholder:font-medium placeholder:text-ink-mute focus:bg-white focus:ring-2 focus:ring-brand-400";
 
   return (
     <section id="contacto" className="relative isolate overflow-hidden py-20 lg:py-32">
-      <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-b from-canvas via-sun-50/60 to-sand" />
+      <div aria-hidden className="absolute inset-0 -z-10 bg-mist" />
       <div className="container-x grid gap-14 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
         <div>
           <SectionHeading align="left" eyebrow={t.contact.eyebrow} title={t.contact.title} subtitle={t.contact.subtitle} />
@@ -123,13 +123,13 @@ export function Contact() {
             >
               <MapArt />
               <span className="absolute top-1/2 left-[38%] -translate-x-1/2 -translate-y-full">
-                <span className="absolute top-full left-1/2 size-10 -translate-x-1/2 -translate-y-1/2 animate-pulse-ring rounded-full bg-sun-400/50" />
-                <span className="relative grid size-14 place-items-center rounded-full rounded-br-none bg-gradient-sun text-white shadow-sun transition group-hover:-translate-y-1 [transform:rotate(45deg)]">
+                <span className="absolute top-full left-1/2 size-10 -translate-x-1/2 -translate-y-1/2 animate-pulse-ring rounded-full bg-brand-400/50" />
+                <span className="relative grid size-14 place-items-center rounded-full rounded-br-none bg-brand-600 text-white shadow-brand transition group-hover:-translate-y-1 [transform:rotate(45deg)]">
                   <Glyph icon={MapPin} size={24} strokeWidth={2.4} className="-rotate-45" />
                 </span>
               </span>
               <span className="glass absolute right-4 bottom-4 flex items-center gap-2 rounded-full px-5 py-3 text-sm font-bold text-ink transition group-hover:bg-white">
-                <Glyph icon={Navigation} size={16} strokeWidth={2.4} className="text-sun-600" />
+                <Glyph icon={Navigation} size={16} strokeWidth={2.4} className="text-brand-600" />
                 {t.contact.map}
               </span>
             </a>
@@ -139,7 +139,7 @@ export function Contact() {
         {/* form */}
         <Reveal y={50} className="relative pt-12">
           <div className="absolute top-0 left-8 flex h-14 items-center gap-2.5 rounded-t-[1.5rem] bg-white px-6 font-display text-lg font-bold text-ink">
-            <span className="grid size-7 place-items-center rounded-full bg-gradient-sun text-white">
+            <span className="grid size-7 place-items-center rounded-full bg-brand-600 text-white">
               <Glyph icon={Send} size={14} strokeWidth={2.6} />
             </span>
             {f.title}
@@ -156,7 +156,7 @@ export function Contact() {
                 >
                   <GlassIcon icon={PartyPopper} tone="mint" className="size-32" />
                   <p className="mt-6 max-w-sm font-display text-2xl font-bold text-ink">{f.success}</p>
-                  <button onClick={() => setStatus("idle")} className="mt-6 text-sm font-bold text-sun-700 underline-offset-4 hover:underline">
+                  <button onClick={() => setStatus("idle")} className="mt-6 text-sm font-bold text-brand-700 underline-offset-4 hover:underline">
                     ← {f.title}
                   </button>
                 </motion.div>
