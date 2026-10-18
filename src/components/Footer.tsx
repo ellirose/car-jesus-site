@@ -24,7 +24,7 @@ export function Footer() {
   const { t } = useI18n();
 
   return (
-    <footer className="relative isolate overflow-hidden bg-frost pt-20">
+    <footer className="relative isolate overflow-hidden bg-frost pt-8 lg:pt-12">
 
       <div className="container-x">
         {/* CTA strip */}
@@ -134,14 +134,14 @@ export function Footer() {
         </div>
       </div>
 
-      {/* oversized outlined wordmark that rises into view */}
+      {/* oversized wordmark that rises into view */}
       <motion.p
         aria-hidden
         initial={{ y: "30%", opacity: 0 }}
         whileInView={{ y: "0%", opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
-        className="pointer-events-none -mb-[0.22em] text-center font-display text-[clamp(5rem,22vw,20rem)] leading-none font-semibold tracking-[-0.06em] text-transparent select-none [-webkit-text-stroke:1.5px_var(--color-brand-300)]"
+        className="pointer-events-none -mb-[0.22em] text-center font-display text-[clamp(5rem,22vw,20rem)] leading-none font-semibold tracking-[-0.06em] text-brand-100 select-none"
       >
         Solara
       </motion.p>
