@@ -42,23 +42,30 @@ export function SectionHeading({ eyebrow, title, subtitle, align = "center", ton
           )}
         </span>
       </Reveal>
-      <h2 className="mt-5 font-display text-[clamp(2rem,4.2vw,3.5rem)] leading-[1.08] font-semibold tracking-[-0.025em] text-balance text-ink">
+      {/* The heading observes the viewport (its words start clipped, so they can't observe themselves). */}
+      <motion.h2
+        className="mt-5 font-display text-[clamp(2rem,4.2vw,3.5rem)] leading-[1.08] font-semibold tracking-[-0.025em] text-balance text-ink"
+        initial="hidden"
+        whileInView="shown"
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ staggerChildren: 0.045, delayChildren: 0.05 }}
+      >
         {words.map((word, i) => (
           <span key={`${word}-${i}`}>
             <span className="inline-block overflow-hidden pb-[0.08em] align-bottom">
               <motion.span
                 className="inline-block"
-                initial={{ y: "105%", opacity: 0, filter: "blur(6px)" }}
-                whileInView={{ y: "0%", opacity: 1, filter: "blur(0px)" }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 1, delay: 0.05 + i * 0.045, ease: easeOutExpo }}
+                variants={{
+                  hidden: { y: "105%", opacity: 0, filter: "blur(6px)" },
+                  shown: { y: "0%", opacity: 1, filter: "blur(0px)", transition: { duration: 1, ease: easeOutExpo } },
+                }}
               >
                 {word}
               </motion.span>
             </span>{" "}
           </span>
         ))}
-      </h2>
+      </motion.h2>
       {subtitle && (
         <Reveal delay={0.25} y={16}>
           <p className={`mt-5 text-lg leading-relaxed text-pretty text-ink-soft ${centered ? "mx-auto max-w-2xl" : "max-w-2xl"}`}>
