@@ -35,7 +35,7 @@ export function Tilt({ children, className = "", max = 10, glare = true }: TiltP
   }
 
   return (
-    <div className="perspective-distant">
+    <div className="perspective-distant h-full">
       <motion.div
         onPointerMove={onMove}
         onPointerLeave={onLeave}
