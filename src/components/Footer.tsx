@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "motion/react";
 import { ArrowUp, Mail, MapPin, Phone } from "lucide";
 import { Glyph } from "./icons/Glyph";
 import { SocialIcon, type Social } from "./icons/BrandLogo";
@@ -23,8 +24,7 @@ export function Footer() {
   const { t } = useI18n();
 
   return (
-    <footer className="relative isolate overflow-hidden bg-sand pt-20">
-      <div aria-hidden className="absolute top-24 left-1/2 -z-10 h-56 w-[70%] -translate-x-1/2 rounded-full bg-sun-200/40 blur-[110px]" />
+    <footer className="relative isolate overflow-hidden bg-frost pt-20">
 
       <div className="container-x">
         {/* CTA strip */}
@@ -53,7 +53,7 @@ export function Footer() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={s}
-                  className="grid size-12 place-items-center rounded-full bg-white text-ink-soft shadow-soft transition duration-300 hover:-translate-y-1 hover:bg-gradient-sun hover:text-white hover:shadow-sun"
+                  className="grid size-12 place-items-center rounded-full bg-white text-ink-soft shadow-soft transition duration-300 hover:-translate-y-1 hover:bg-brand-600 hover:text-white hover:shadow-brand"
                 >
                   <SocialIcon name={s} className="size-5" />
                 </a>
@@ -66,7 +66,7 @@ export function Footer() {
             <ul className="mt-5 space-y-3">
               {navIds.map(([id, key]) => (
                 <li key={id}>
-                  <a href={`#${id}`} className="font-semibold text-ink-soft transition hover:pl-1 hover:text-sun-600">
+                  <a href={`#${id}`} className="font-semibold text-ink-soft transition hover:pl-1 hover:text-brand-600">
                     {t.nav[key]}
                   </a>
                 </li>
@@ -79,7 +79,7 @@ export function Footer() {
             <ul className="mt-5 space-y-3">
               {t.footer.serviceLinks.map((s) => (
                 <li key={s}>
-                  <a href="#servicios" className="font-semibold text-ink-soft transition hover:pl-1 hover:text-sun-600">
+                  <a href="#servicios" className="font-semibold text-ink-soft transition hover:pl-1 hover:text-brand-600">
                     {s}
                   </a>
                 </li>
@@ -91,19 +91,19 @@ export function Footer() {
             <p className="font-display text-lg font-bold text-ink">{t.footer.contact}</p>
             <ul className="mt-5 space-y-4 text-ink-soft">
               <li>
-                <a href={site.phoneHref} className="flex items-center gap-3 font-semibold transition hover:text-sun-600">
-                  <Glyph icon={Phone} size={18} className="shrink-0 text-sun-600" />
+                <a href={site.phoneHref} className="flex items-center gap-3 font-semibold transition hover:text-brand-600">
+                  <Glyph icon={Phone} size={18} className="shrink-0 text-brand-600" />
                   {site.phone}
                 </a>
               </li>
               <li>
-                <a href={`mailto:${site.email}`} className="flex items-center gap-3 font-semibold transition hover:text-sun-600">
-                  <Glyph icon={Mail} size={18} className="shrink-0 text-sun-600" />
+                <a href={`mailto:${site.email}`} className="flex items-center gap-3 font-semibold transition hover:text-brand-600">
+                  <Glyph icon={Mail} size={18} className="shrink-0 text-brand-600" />
                   {site.email}
                 </a>
               </li>
               <li className="flex gap-3">
-                <Glyph icon={MapPin} size={18} className="mt-0.5 shrink-0 text-sun-600" />
+                <Glyph icon={MapPin} size={18} className="mt-0.5 shrink-0 text-brand-600" />
                 <span className="text-sm leading-relaxed">{site.address}</span>
               </li>
             </ul>
@@ -126,7 +126,7 @@ export function Footer() {
               href="#inicio"
               aria-label={t.footer.backToTop}
               title={t.footer.backToTop}
-              className="grid size-12 place-items-center rounded-full bg-ink text-white transition hover:-translate-y-1 hover:bg-sun-600"
+              className="grid size-12 place-items-center rounded-full bg-ink text-white transition hover:-translate-y-1 hover:bg-brand-600"
             >
               <Glyph icon={ArrowUp} size={20} strokeWidth={2.4} />
             </a>
@@ -134,19 +134,17 @@ export function Footer() {
         </div>
       </div>
 
-      {/* oversized wordmark */}
-      <p
+      {/* oversized outlined wordmark that rises into view */}
+      <motion.p
         aria-hidden
-        className="pointer-events-none -mb-[0.22em] text-center font-display text-[clamp(5rem,22vw,20rem)] leading-none font-extrabold tracking-[-0.06em] select-none"
-        style={{
-          background: "linear-gradient(180deg, rgb(255 138 31 / 0.22), rgb(255 138 31 / 0))",
-          WebkitBackgroundClip: "text",
-          backgroundClip: "text",
-          color: "transparent",
-        }}
+        initial={{ y: "30%", opacity: 0 }}
+        whileInView={{ y: "0%", opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
+        className="pointer-events-none -mb-[0.22em] text-center font-display text-[clamp(5rem,22vw,20rem)] leading-none font-semibold tracking-[-0.06em] text-transparent select-none [-webkit-text-stroke:1.5px_var(--color-brand-300)]"
       >
         Solara
-      </p>
+      </motion.p>
     </footer>
   );
 }
