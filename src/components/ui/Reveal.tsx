@@ -41,22 +41,26 @@ export function MediaReveal({
   className?: string;
   delay?: number;
 }) {
+  // The unclipped outer element observes the viewport; a fully clipped element
+  // may never be reported as intersecting.
   return (
-    <motion.div
-      className={`overflow-hidden ${className}`}
-      initial={{ clipPath: "inset(100% 0% 0% 0%)" }}
-      whileInView={{ clipPath: "inset(0% 0% 0% 0%)" }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 1.4, delay, ease: [0.76, 0, 0.24, 1] }}
-    >
+    <motion.div className={className} initial="hidden" whileInView="shown" viewport={{ once: true, margin: "-60px" }}>
       <motion.div
-        className="size-full"
-        initial={{ scale: 1.25 }}
-        whileInView={{ scale: 1 }}
-        viewport={{ once: true, margin: "-60px" }}
-        transition={{ duration: 2, delay, ease: easeOutExpo }}
+        className="size-full overflow-hidden"
+        variants={{
+          hidden: { clipPath: "inset(100% 0% 0% 0%)" },
+          shown: { clipPath: "inset(0% 0% 0% 0%)", transition: { duration: 1.4, delay, ease: [0.76, 0, 0.24, 1] } },
+        }}
       >
-        {children}
+        <motion.div
+          className="size-full"
+          variants={{
+            hidden: { scale: 1.25 },
+            shown: { scale: 1, transition: { duration: 2, delay, ease: easeOutExpo } },
+          }}
+        >
+          {children}
+        </motion.div>
       </motion.div>
     </motion.div>
   );
