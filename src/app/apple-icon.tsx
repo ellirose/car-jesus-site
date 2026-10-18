@@ -9,7 +9,7 @@ export const contentType = "image/png";
 export default function AppleIcon() {
   return new ImageResponse(
     (
-      <div style={{ display: "flex", width: "100%", height: "100%", background: "linear-gradient(135deg, #ffc24b, #ff8a1f 50%, #ee5419)" }}>
+      <div style={{ display: "flex", width: "100%", height: "100%", background: "#2b57e0" }}>
         <img src={svgDataUrl(logoMarkSvg)} width={180} height={180} alt="" />
       </div>
     ),
