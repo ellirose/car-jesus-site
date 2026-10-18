@@ -7,7 +7,7 @@ type RotatingBadgeProps = {
   className?: string;
 };
 
-/** Circular badge whose label text slowly orbits around a gradient core. */
+/** Circular badge whose label text slowly orbits around a solid core. */
 export function RotatingBadge({ text, children, className = "" }: RotatingBadgeProps) {
   const id = `ring-${useId().replace(/[^a-zA-Z0-9]/g, "")}`;
   return (
@@ -24,7 +24,7 @@ export function RotatingBadge({ text, children, className = "" }: RotatingBadgeP
           </textPath>
         </text>
       </svg>
-      <span className="relative grid size-[44%] place-items-center rounded-full bg-gradient-sun text-white shadow-sun">
+      <span className="relative grid size-[44%] place-items-center rounded-full bg-brand-600 text-white shadow-brand">
         {children}
       </span>
     </div>

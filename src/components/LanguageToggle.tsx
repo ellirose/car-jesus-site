@@ -37,14 +37,14 @@ export function LanguageToggle({ compact = false, layoutKey = "lang", className 
             {active && (
               <motion.span
                 layoutId={`${layoutKey}-pill`}
-                className="absolute inset-0 rounded-full bg-white shadow-soft ring-1 ring-sun-200"
+                className="absolute inset-0 rounded-full bg-white shadow-soft ring-1 ring-brand-200"
                 transition={{ type: "spring", stiffness: 420, damping: 34 }}
               />
             )}
             <span
               className={`relative grid place-items-center rounded-full transition duration-300 ${
                 active
-                  ? "scale-100 shadow-[0_6px_14px_-4px_rgb(19_33_58/0.35)]"
+                  ? "scale-100 shadow-[0_6px_14px_-4px_rgb(16_29_51/0.3)]"
                   : "scale-90 opacity-70 saturate-[0.65] group-hover/flag:scale-100 group-hover/flag:opacity-100 group-hover/flag:saturate-100"
               }`}
             >
