@@ -10,17 +10,18 @@ import { useI18n } from "@/lib/i18n/provider";
 import { whatsappLink } from "@/lib/site";
 
 const items = [
-  { icon: Lock, tone: "azure" },
+  { icon: Lock, tone: "aqua" },
   { icon: Armchair, tone: "mint" },
-  { icon: Zap, tone: "sun" },
-  { icon: Gift, tone: "berry" },
+  { icon: Zap, tone: "brand" },
+  { icon: Gift, tone: "iris" },
 ] as const satisfies readonly { icon: unknown; tone: Tone }[];
 
-const halo: Record<Tone, string> = {
-  sun: "from-sun-100",
-  azure: "from-azure-100",
-  mint: "from-mint-400/25",
-  berry: "from-berry-400/20",
+/** Solid tinted dome behind each icon. */
+const dome: Record<Tone, string> = {
+  brand: "bg-brand-50",
+  aqua: "bg-aqua-50",
+  mint: "bg-mint-50",
+  iris: "bg-iris-50",
 };
 
 export function WhySell() {
@@ -28,7 +29,7 @@ export function WhySell() {
 
   return (
     <section className="relative isolate overflow-hidden pt-6 pb-16 lg:pb-20">
-      <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-b from-sun-50 to-canvas" />
+      <div aria-hidden className="absolute inset-0 -z-10 bg-mist" />
       <div className="container-x">
         <SectionHeading eyebrow={t.why.eyebrow} title={t.why.title} subtitle={t.why.subtitle} />
 
@@ -37,9 +38,9 @@ export function WhySell() {
             const { icon, tone } = items[i];
             return (
               <Reveal key={i} delay={i * 0.1} className={i % 2 === 1 ? "lg:translate-y-12" : ""}>
-                <article className="group relative flex h-full flex-col items-center overflow-hidden rounded-[999px] bg-white/80 px-7 pt-5 pb-14 text-center shadow-soft ring-1 ring-white backdrop-blur transition duration-500 hover:-translate-y-3 hover:bg-white hover:shadow-lift">
-                  <div aria-hidden className={`absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b ${halo[tone]} to-transparent`} />
-                  <div className="relative grid aspect-square w-full max-w-[13rem] place-items-center rounded-full bg-white shadow-[inset_0_-10px_30px_rgb(19_33_58/0.05),0_10px_30px_-12px_rgb(19_33_58/0.18)] transition duration-700 group-hover:rotate-[8deg]">
+                <article className="group relative flex h-full flex-col items-center overflow-hidden rounded-[999px] bg-white px-7 pt-5 pb-14 text-center shadow-soft ring-1 ring-line/60 transition duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-3 hover:shadow-lift">
+                  <div aria-hidden className={`absolute inset-x-0 top-0 h-[42%] rounded-b-[50%] transition-[height] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:h-[48%] ${dome[tone]}`} />
+                  <div className="relative grid aspect-square w-full max-w-[13rem] place-items-center rounded-full bg-white shadow-[0_10px_30px_-12px_rgb(16_29_51/0.16)] transition duration-700 group-hover:rotate-[8deg]">
                     <div aria-hidden className="absolute inset-3 rounded-full border border-dashed border-line" />
                     <GlassIcon icon={icon} tone={tone} delay={i * 0.12} className="size-32 lg:size-36" />
                   </div>
