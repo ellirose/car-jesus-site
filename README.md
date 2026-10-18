@@ -5,10 +5,15 @@ Landing page for a Mexican pre-owned car dealership, modelled on the structure a
 "sell your car" valuation, financing and WhatsApp-first contact. The visual design is new: light, glassy,
 card-based, with motion and 3D details.
 
+- **Look and feel:** a bright, cool palette (ice canvas, cobalt `brand`, `aqua`, `iris`, `mint`) built from solid
+  fills, hairlines and white space rather than gradients. Sections flow into each other through drifting
+  wave dividers (`components/ui/WaveDivider.tsx`), backgrounds carry "light-trail" contour lines
+  (`components/ui/FlowLines.tsx`), headings rise word by word, photos open with a curtain wipe, and Lenis gives the
+  page inertial smooth scrolling. All motion respects `prefers-reduced-motion`.
 - **Languages:** Spanish (primary, `es-MX`), English and Brazilian Portuguese, switched with a toggle of
   circular flags (header, mobile drawer and footer). The choice is remembered in `localStorage` and can be forced
   with `?lang=en` / `?lang=pt`.
-- **Stack:** Next.js 16 (App Router, Turbopack, Cache Components), React 19, Tailwind CSS v4, Motion,
+- **Stack:** Next.js 16 (App Router, Turbopack, Cache Components), React 19, Tailwind CSS v4, Motion, Lenis,
   lucide glyphs and simple-icons brand logos.
 
 ## Getting started
@@ -50,6 +55,7 @@ All business data is placeholder content to be replaced with the client's real i
 | Vehicles (model, year, km, price, photo, badge) | `src/lib/inventory.ts` |
 | Every visible text, per language | `src/lib/i18n/es.ts` (source of truth and type), `en.ts`, `pt.ts` |
 | Colors, shadows, radii, animations | `@theme` block in `src/app/globals.css` |
+| Section background order and wave transitions | `src/app/page.tsx` |
 
 TypeScript enforces that `en.ts` and `pt.ts` have exactly the same keys as `es.ts`. To add a language, create a
 dictionary of type `Dictionary`, register it in `src/lib/i18n/provider.tsx` and add a flag in
