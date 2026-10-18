@@ -24,11 +24,11 @@ export function About() {
           <div className="relative ml-auto aspect-[4/5] w-[82%] overflow-hidden rounded-t-[999px] rounded-b-[2.75rem] shadow-lift ring-[10px] ring-white">
             <MediaReveal className="absolute inset-0">
               <Image
-                src="/media/images/showroom.jpg"
+                src="/media/images/showroom-mg.jpg"
                 alt=""
                 fill
                 sizes="(min-width: 1024px) 28rem, 80vw"
-                className="object-cover transition duration-[1.5s] hover:scale-105"
+                className="object-cover object-[50%_62%] transition duration-[1.5s] hover:scale-105"
               />
             </MediaReveal>
           </div>

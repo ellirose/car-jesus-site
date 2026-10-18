@@ -85,7 +85,7 @@ All media is free for commercial use without attribution under the license of it
 | `images/car-6.jpg` | [Unsplash](https://unsplash.com/photos/white-volkswagen-vehicle-during-daytime-SuD4h8Gpgok) |
 | `images/car-7.jpg` | [Unsplash](https://unsplash.com/photos/Xxq4jADBhq0) |
 | `images/car-8.jpg` | [Unsplash](https://unsplash.com/photos/vUOpElTmh6k) |
-| `images/showroom.jpg` | [Unsplash](https://unsplash.com/photos/a-car-showroom-filled-with-lots-of-cars-RVEdgp-dkYY) |
+| `images/showroom-mg.jpg` | [Unsplash](https://unsplash.com/photos/DB7_9Z7gj2Y) |
 | `images/handshake.jpg` | [Pexels](https://www.pexels.com/photo/car-dealership-customer-purchase-agreement-36730221/) |
 | `images/interior.jpg` | [Unsplash](https://unsplash.com/photos/vyvYqNO81CM) |
 | `images/road.jpg` | [Unsplash](https://unsplash.com/photos/lqd2nynliu8) |
