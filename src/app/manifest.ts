@@ -8,8 +8,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: "Seminuevos certificados, financiamiento y venta de autos en México.",
     start_url: "/",
     display: "standalone",
-    background_color: "#f7f5f1",
-    theme_color: "#ff8a1f",
+    background_color: "#f5f8fc",
+    theme_color: "#2b57e0",
     lang: "es-MX",
     icons: [
       { src: "/icon.svg", sizes: "any", type: "image/svg+xml" },
