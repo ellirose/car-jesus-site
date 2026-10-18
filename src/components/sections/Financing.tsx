@@ -8,7 +8,8 @@ import { Glyph } from "../icons/Glyph";
 import { GlassIcon } from "../icons/GlassIcon";
 import { AnimatedNumber } from "../ui/AnimatedNumber";
 import { ButtonLink } from "../ui/Button";
-import { Reveal } from "../ui/Reveal";
+import { MediaReveal, Reveal } from "../ui/Reveal";
+import { FlowLines } from "../ui/FlowLines";
 import { SectionHeading } from "../ui/SectionHeading";
 import { fill, useI18n } from "@/lib/i18n/provider";
 import { whatsappLink } from "@/lib/site";
@@ -24,24 +25,14 @@ function SplitRing({ downPct }: { downPct: number }) {
   const down = (downPct / 100) * c;
   return (
     <svg viewBox="0 0 200 200" className="absolute inset-0 size-full -rotate-90">
-      <defs>
-        <linearGradient id="ring-fin" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#8db2ff" />
-          <stop offset="1" stopColor="#2c60e0" />
-        </linearGradient>
-        <linearGradient id="ring-down" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#ffc24b" />
-          <stop offset="1" stopColor="#f26b12" />
-        </linearGradient>
-      </defs>
-      <circle cx="100" cy="100" r={r} fill="none" stroke="url(#ring-fin)" strokeWidth="16" />
+      <circle cx="100" cy="100" r={r} fill="none" stroke="#c2d5ff" strokeWidth="14" />
       <motion.circle
         cx="100"
         cy="100"
         r={r}
         fill="none"
-        stroke="url(#ring-down)"
-        strokeWidth="16"
+        stroke="#2b57e0"
+        strokeWidth="14"
         strokeLinecap="round"
         strokeDasharray={c}
         animate={{ strokeDashoffset: c - down }}
@@ -69,18 +60,18 @@ export function Financing() {
 
   return (
     <section id="financiamiento" className="relative isolate overflow-hidden py-20 lg:py-28">
-      <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-b from-canvas via-azure-50 to-canvas" />
-      <div aria-hidden className="absolute top-20 -left-40 -z-10 size-[30rem] rounded-full bg-azure-100 blur-[110px]" />
+      <div aria-hidden className="absolute inset-0 -z-10 bg-white" />
+      <FlowLines className="absolute inset-x-0 bottom-0 -z-10 h-2/3 w-full opacity-60" color="var(--color-aqua-100)" glow="var(--color-aqua-500)" />
 
       <div className="container-x grid items-center gap-16 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
         <div>
-          <SectionHeading align="left" tone="azure" eyebrow={t.finance.eyebrow} title={t.finance.title} subtitle={t.finance.subtitle} />
+          <SectionHeading align="left" tone="aqua" eyebrow={t.finance.eyebrow} title={t.finance.title} subtitle={t.finance.subtitle} />
 
           <ul className="mt-10 grid gap-3 sm:grid-cols-2">
             {t.finance.perks.map((perk, i) => (
               <Reveal key={perk} delay={i * 0.08} y={16}>
                 <li className="flex items-center gap-3 rounded-full bg-white/80 py-3 pr-5 pl-3 font-semibold text-ink shadow-soft ring-1 ring-white">
-                  <span className="grid size-9 shrink-0 place-items-center rounded-full bg-azure-50 text-azure-600">
+                  <span className="grid size-9 shrink-0 place-items-center rounded-full bg-aqua-50 text-aqua-600">
                     <Glyph icon={CircleCheck} size={20} strokeWidth={2.4} />
                   </span>
                   {perk}
@@ -91,11 +82,12 @@ export function Financing() {
 
           <Reveal delay={0.2} className="relative mt-12 hidden sm:block">
             <div className="blob relative aspect-[16/10] w-full max-w-lg overflow-hidden shadow-lift ring-8 ring-white">
-              <Image src="/media/images/interior.jpg" alt="" fill sizes="(min-width: 1024px) 32rem, 90vw" className="object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-tr from-azure-500/25 to-transparent" />
+              <MediaReveal className="absolute inset-0">
+                <Image src="/media/images/interior.jpg" alt="" fill sizes="(min-width: 1024px) 32rem, 90vw" className="object-cover" />
+              </MediaReveal>
             </div>
             <div className="glass absolute -right-2 -bottom-6 flex animate-float items-center gap-3 rounded-[1.5rem] rounded-tr-md py-3 pr-5 pl-3 shadow-lift lg:right-6">
-              <GlassIcon icon={Percent} tone="azure" className="size-14" />
+              <GlassIcon icon={Percent} tone="aqua" className="size-14" />
               <div>
                 <p className="text-xs font-bold tracking-wider text-ink-mute uppercase">{t.finance.rate}</p>
                 <p className="font-display text-2xl font-extrabold text-ink">{formatNumber(RATE * 100, 1)}%</p>
@@ -105,8 +97,8 @@ export function Financing() {
         </div>
 
         {/* calculator */}
-        <Reveal y={50} className="relative drop-shadow-[0_30px_50px_rgb(19_33_58/0.16)]">
-          <span className="absolute top-2 right-2 z-10 grid size-14 place-items-center rounded-full bg-gradient-sun text-white shadow-sun">
+        <Reveal y={50} className="relative drop-shadow-[0_30px_50px_rgb(16_29_51/0.14)]">
+          <span className="absolute top-2 right-2 z-10 grid size-14 place-items-center rounded-full bg-brand-600 text-white shadow-brand">
             <Glyph icon={Percent} size={24} strokeWidth={2.6} />
           </span>
           <div className="clip-chamfer rounded-[2.5rem] bg-white p-6 pt-16 sm:p-10 sm:pt-20">
@@ -134,7 +126,7 @@ export function Financing() {
               <div>
                 <div className="flex items-baseline justify-between gap-4">
                   <label htmlFor="fin-down" className="font-bold text-ink-soft">
-                    {t.finance.down} <span className="text-sun-600">{downPct}%</span>
+                    {t.finance.down} <span className="text-brand-600">{downPct}%</span>
                   </label>
                   <AnimatedNumber value={price * (downPct / 100)} format={money} className="font-display text-2xl font-extrabold text-ink" />
                 </div>
@@ -175,7 +167,7 @@ export function Financing() {
                 <p className="mt-2 text-right text-xs font-semibold text-ink-mute">{t.finance.months}</p>
               </div>
 
-              <div className="grid items-center gap-8 rounded-[2rem] bg-gradient-to-br from-canvas to-azure-50 p-6 sm:grid-cols-[auto_1fr]">
+              <div className="grid items-center gap-8 rounded-[2rem] bg-mist p-6 sm:grid-cols-[auto_1fr]">
                 <div className="relative mx-auto grid size-52 place-items-center">
                   <SplitRing downPct={downPct} />
                   <div className="text-center">
@@ -186,14 +178,14 @@ export function Financing() {
                 <dl className="space-y-4">
                   <div className="flex items-center justify-between gap-3 border-b border-dashed border-line pb-4">
                     <dt className="flex items-center gap-2 text-sm font-semibold text-ink-soft">
-                      <span className="size-3 rounded-full bg-gradient-sun" />
+                      <span className="size-3 rounded-full bg-brand-600" />
                       {t.finance.down}
                     </dt>
                     <dd className="font-display font-bold text-ink">{money(price * (downPct / 100))}</dd>
                   </div>
                   <div className="flex items-center justify-between gap-3 border-b border-dashed border-line pb-4">
                     <dt className="flex items-center gap-2 text-sm font-semibold text-ink-soft">
-                      <span className="size-3 rounded-full bg-gradient-azure" />
+                      <span className="size-3 rounded-full bg-brand-200" />
                       {t.finance.financed}
                     </dt>
                     <dd className="font-display font-bold text-ink">{money(financed)}</dd>
