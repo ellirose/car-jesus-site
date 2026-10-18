@@ -20,6 +20,7 @@ import { Glyph, SteeringWheel } from "../icons/Glyph";
 import { SocialIcon } from "../icons/BrandLogo";
 import { Reveal } from "../ui/Reveal";
 import { SectionHeading } from "../ui/SectionHeading";
+import { FlowLines } from "../ui/FlowLines";
 import { Tilt } from "../ui/Tilt";
 import { useI18n } from "@/lib/i18n/provider";
 import { whatsappLink } from "@/lib/site";
@@ -39,7 +40,7 @@ const icons: IconNode[] = [
   SteeringWheel,
 ];
 
-const toneCycle: Tone[] = ["sun", "azure", "mint", "berry"];
+const toneCycle: Tone[] = ["brand", "aqua", "mint", "iris"];
 
 /** Alternating organic outlines so the grid never reads as a wall of rectangles. */
 const shapes = [
@@ -48,6 +49,13 @@ const shapes = [
   "rounded-[3.5rem]",
   "rounded-[3.5rem_3.5rem_0.75rem_3.5rem]",
 ];
+
+const fills: Record<Tone, string> = {
+  brand: "bg-brand-50",
+  aqua: "bg-aqua-50",
+  mint: "bg-mint-50",
+  iris: "bg-iris-50",
+};
 
 const FEATURED = 0;
 const WIDE = 10;
@@ -58,7 +66,6 @@ export function Services() {
 
   return (
     <section id="servicios" className="relative pt-10 pb-20 lg:pt-14 lg:pb-28">
-      <div aria-hidden className="pointer-events-none absolute top-40 -left-32 size-96 rounded-full bg-azure-100/70 blur-3xl" />
       <div className="container-x relative">
         <SectionHeading eyebrow={t.services.eyebrow} title={t.services.title} subtitle={t.services.subtitle} />
 
@@ -70,18 +77,25 @@ export function Services() {
               return (
                 <Reveal key={i} className="sm:col-span-2 lg:row-span-2">
                   <Tilt max={6} className="group h-full rounded-[3rem]">
-                    <article className="relative flex h-full min-h-[26rem] flex-col justify-between overflow-hidden rounded-[3rem] bg-gradient-to-br from-sun-50 via-white to-white p-8 shadow-soft ring-1 ring-sun-100 transition-shadow duration-500 group-hover:shadow-lift lg:p-12">
-                      <div aria-hidden className="absolute -right-24 -bottom-24 size-[26rem] rounded-full bg-gradient-sun opacity-15 blur-2xl" />
-                      <div aria-hidden className="absolute top-10 right-10 size-56 rounded-full border-[18px] border-sun-200/40" />
-                      <span className="relative w-fit rounded-full bg-gradient-sun px-4 py-1.5 text-xs font-bold tracking-[0.16em] text-white uppercase shadow-sun">
+                    <article className="relative flex h-full min-h-[26rem] flex-col justify-between overflow-hidden rounded-[3rem] bg-brand-600 p-8 shadow-brand transition-shadow duration-500 group-hover:shadow-lift lg:p-12">
+                      <FlowLines className="absolute inset-0 size-full opacity-50" color="rgb(255 255 255 / 0.3)" glow="#ffffff" />
+                      {[14, 22, 30].map((size, k) => (
+                        <div
+                          key={size}
+                          aria-hidden
+                          className="absolute rounded-full border border-white/20"
+                          style={{ width: `${size}rem`, height: `${size}rem`, right: `${-size / 3}rem`, top: `${-size / 3 + k}rem` }}
+                        />
+                      ))}
+                      <span className="relative w-fit rounded-full bg-white px-4 py-1.5 text-xs font-bold tracking-[0.16em] text-brand-700 uppercase">
                         {t.services.featuredTag}
                       </span>
                       <div className="relative" style={{ transform: "translateZ(40px)" }}>
-                        <GlassIcon icon={icons[i]} tone="sun" className="size-40 lg:size-52" />
+                        <GlassIcon icon={icons[i]} tone="aqua" inverted className="size-40 lg:size-52" />
                       </div>
                       <div className="relative">
-                        <h3 className="font-display text-3xl font-bold tracking-tight text-ink lg:text-4xl">{item.title}</h3>
-                        <p className="mt-3 max-w-md text-lg leading-relaxed text-ink-soft">{item.text}</p>
+                        <h3 className="font-display text-3xl font-semibold tracking-tight text-white lg:text-4xl">{item.title}</h3>
+                        <p className="mt-3 max-w-md text-lg leading-relaxed text-white/80">{item.text}</p>
                       </div>
                     </article>
                   </Tilt>
@@ -96,9 +110,9 @@ export function Services() {
                     href={whatsappLink(t.fabMessage)}
                     target="_blank"
                     rel="noreferrer"
-                    className="group relative flex h-full items-center gap-6 overflow-hidden rounded-full bg-gradient-to-r from-azure-50 via-white to-white py-5 pr-8 pl-5 shadow-soft ring-1 ring-azure-100 transition duration-500 hover:-translate-y-1.5 hover:shadow-lift"
+                    className="group relative flex h-full items-center gap-6 overflow-hidden rounded-full bg-aqua-50 py-5 pr-8 pl-5 shadow-soft ring-1 ring-aqua-100 transition duration-500 hover:-translate-y-1.5 hover:shadow-lift"
                   >
-                    <GlassIcon icon={icons[i]} tone="azure" className="size-24 shrink-0 lg:size-28" />
+                    <GlassIcon icon={icons[i]} tone="aqua" className="size-24 shrink-0 lg:size-28" />
                     <div className="min-w-0 flex-1">
                       <h3 className="font-display text-xl font-bold tracking-tight text-ink lg:text-2xl">{item.title}</h3>
                       <p className="mt-1 text-ink-soft">{item.text}</p>
@@ -114,13 +128,12 @@ export function Services() {
             return (
               <Reveal key={i} delay={(i % 4) * 0.06}>
                 <article
-                  className={`group relative h-full overflow-hidden bg-white/80 p-7 shadow-soft ring-1 ring-white backdrop-blur transition duration-500 hover:-translate-y-2 hover:bg-white hover:shadow-lift ${shapes[i % shapes.length]}`}
+                  className={`group relative h-full overflow-hidden bg-white p-7 shadow-soft ring-1 ring-line/60 transition duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 hover:shadow-lift ${shapes[i % shapes.length]}`}
                 >
+                  {/* liquid tint that rises from the base on hover */}
                   <div
                     aria-hidden
-                    className={`absolute -top-16 -right-16 size-40 rounded-full opacity-0 blur-2xl transition duration-700 group-hover:opacity-100 ${
-                      tone === "sun" ? "bg-sun-200" : tone === "azure" ? "bg-azure-100" : tone === "mint" ? "bg-mint-400/30" : "bg-berry-400/25"
-                    }`}
+                    className={`absolute inset-x-[-20%] -bottom-1/2 h-[150%] origin-bottom scale-y-0 rounded-[50%] transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-y-100 ${fills[tone]}`}
                   />
                   <div className="relative flex items-start justify-between">
                     <GlassIcon icon={icons[i]} tone={tone} delay={(i % 4) * 0.1} className="size-24 lg:size-28" />

@@ -10,10 +10,10 @@ import { estimateMonthly, type Vehicle } from "@/lib/inventory";
 import { whatsappLink } from "@/lib/site";
 
 const badgeStyles = {
-  new: "bg-gradient-sun text-white",
-  deal: "bg-berry-400 text-white",
+  new: "bg-brand-600 text-white",
+  deal: "bg-iris-400 text-white",
   lowKm: "bg-mint-500 text-white",
-  certified: "bg-azure-500 text-white",
+  certified: "bg-aqua-500 text-white",
 } as const;
 
 export function VehicleCard({ car, priority = false }: { car: Vehicle; priority?: boolean }) {
@@ -42,7 +42,6 @@ export function VehicleCard({ car, priority = false }: { car: Vehicle; priority?
             className="object-cover transition duration-[1.2s] ease-out group-hover:scale-110"
             style={{ objectPosition: car.focus }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink/35 via-transparent to-transparent" />
           <span
             className={`absolute top-3 left-3 rounded-full px-3 py-1 text-xs font-bold tracking-wide shadow-soft ${badgeStyles[car.badge]}`}
           >
@@ -59,7 +58,7 @@ export function VehicleCard({ car, priority = false }: { car: Vehicle; priority?
               icon={Heart}
               size={18}
               strokeWidth={2.4}
-              className={`transition ${saved ? "scale-110 fill-berry-400 text-berry-400" : "text-ink"}`}
+              className={`transition ${saved ? "scale-110 fill-iris-400 text-iris-400" : "text-ink"}`}
             />
           </button>
           <span className="absolute bottom-3 left-3 grid size-11 place-items-center rounded-full bg-white/95 text-ink shadow-soft">
@@ -83,7 +82,7 @@ export function VehicleCard({ car, priority = false }: { car: Vehicle; priority?
           <ul className="mt-4 grid grid-cols-2 gap-2">
             {specs.map((s) => (
               <li key={s.label} className="flex items-center gap-2 rounded-full bg-canvas px-3 py-1.5 text-[13px] font-semibold text-ink-soft">
-                <Glyph icon={s.icon} size={15} className="shrink-0 text-sun-600" />
+                <Glyph icon={s.icon} size={15} className="shrink-0 text-brand-600" />
                 <span className="truncate">{s.label}</span>
               </li>
             ))}
@@ -93,7 +92,7 @@ export function VehicleCard({ car, priority = false }: { car: Vehicle; priority?
             <div>
               <p className="font-display text-2xl font-extrabold tracking-tight text-ink">{formatMoney(car.price)}</p>
               <p className="text-xs font-semibold text-ink-mute">
-                {t.inventory.from} <span className="text-azure-600">{formatMoney(estimateMonthly(car.price))}</span>
+                {t.inventory.from} <span className="text-aqua-600">{formatMoney(estimateMonthly(car.price))}</span>
                 {t.inventory.perMonth}
               </p>
             </div>
@@ -102,7 +101,7 @@ export function VehicleCard({ car, priority = false }: { car: Vehicle; priority?
               target="_blank"
               rel="noreferrer"
               aria-label={`${t.inventory.details}: ${name}`}
-              className="flex h-12 shrink-0 items-center gap-1 rounded-full bg-ink pr-1.5 pl-4 text-sm font-bold whitespace-nowrap text-white xl:pl-1.5 transition duration-300 hover:bg-sun-600 hover:shadow-sun"
+              className="flex h-12 shrink-0 items-center gap-1 rounded-full bg-ink pr-1.5 pl-4 text-sm font-bold whitespace-nowrap text-white transition duration-500 hover:bg-brand-600 hover:shadow-brand xl:pl-1.5"
             >
               <span className="hidden min-[400px]:inline xl:hidden">{t.inventory.details}</span>
               <span className="grid size-9 place-items-center rounded-full bg-white/15 transition group-hover:rotate-45">

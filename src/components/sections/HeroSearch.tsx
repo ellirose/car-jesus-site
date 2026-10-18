@@ -42,7 +42,7 @@ export function HeroSearch() {
       icon={ChevronDown}
       size={18}
       strokeWidth={2.4}
-      className="pointer-events-none absolute right-4 bottom-3 text-ink-mute transition group-hover/field:text-sun-600"
+      className="pointer-events-none absolute right-4 bottom-3 text-ink-mute transition group-hover/field:text-brand-600"
     />
   );
 
@@ -50,7 +50,7 @@ export function HeroSearch() {
     <form onSubmit={onSubmit} role="search" aria-label={t.search.title} className="relative">
       {/* folder-tab title */}
       <div className="glass absolute -top-10 left-6 hidden items-center gap-2 rounded-t-2xl rounded-b-none border-b-0 px-5 pt-2.5 pb-3 text-sm font-bold text-ink shadow-none lg:flex short:lg:hidden">
-        <span className="grid size-5 place-items-center rounded-full bg-gradient-sun text-white">
+        <span className="grid size-5 place-items-center rounded-full bg-brand-600 text-white">
           <Glyph icon={Search} size={11} strokeWidth={3} />
         </span>
         {t.search.title}
@@ -94,7 +94,7 @@ export function HeroSearch() {
         </div>
 
         <label className="flex min-w-0 flex-1 items-center gap-3 rounded-[1.4rem] bg-white/80 px-4 ring-1 ring-ink/5 lg:px-5">
-          <Glyph icon={Search} size={20} strokeWidth={2.4} className="shrink-0 text-sun-600" />
+          <Glyph icon={Search} size={20} strokeWidth={2.4} className="shrink-0 text-brand-600" />
           <span className="sr-only">{t.search.title}</span>
           <input
             value={query}
@@ -106,9 +106,8 @@ export function HeroSearch() {
 
         <button
           type="submit"
-          className="group/btn relative flex h-12 shrink-0 items-center justify-center gap-2 overflow-hidden rounded-[1.4rem] bg-gradient-sun px-5 text-base font-bold text-white shadow-sun transition hover:brightness-105 active:scale-[0.97] lg:h-auto lg:px-9"
+          className="group/btn relative flex h-12 shrink-0 items-center justify-center gap-2 overflow-hidden rounded-[1.4rem] bg-brand-600 px-5 text-base font-bold text-white shadow-brand transition duration-500 hover:bg-brand-700 active:scale-[0.97] lg:h-auto lg:px-9"
         >
-          <span className="pointer-events-none absolute inset-y-0 left-0 w-1/3 animate-shimmer bg-gradient-to-r from-transparent via-white/40 to-transparent" />
           <Glyph icon={Search} size={20} strokeWidth={2.6} className="lg:hidden" />
           <span className="hidden sm:inline">{t.search.button}</span>
         </button>
