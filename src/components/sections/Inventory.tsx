@@ -45,8 +45,8 @@ export function Inventory() {
 
   return (
     <section id="inventario" className="relative isolate py-20 lg:py-28">
-      {/* curved white backdrop that softly separates this section */}
-      <div aria-hidden className="absolute inset-x-0 top-0 bottom-0 -z-10 rounded-t-[3rem] bg-gradient-to-b from-white via-white to-canvas sm:rounded-t-[5rem]" />
+      {/* the wave divider above pours the canvas into this white section */}
+      <div aria-hidden className="absolute inset-0 -z-10 bg-white" />
       <div className="container-x">
         <div className="flex flex-col gap-10 2xl:flex-row 2xl:items-end 2xl:justify-between">
           <SectionHeading
@@ -73,7 +73,7 @@ export function Inventory() {
                   {selected && (
                     <motion.span
                       layoutId="inv-chip"
-                      className="absolute inset-0 rounded-full bg-gradient-sun shadow-sun"
+                      className="absolute inset-0 rounded-full bg-brand-600 shadow-brand"
                       transition={{ type: "spring", stiffness: 400, damping: 34 }}
                     />
                   )}
@@ -100,7 +100,7 @@ export function Inventory() {
             <button
               key={a.label}
               onClick={a.clear}
-              className="flex items-center gap-1.5 rounded-full bg-sun-50 py-1.5 pr-2 pl-3.5 text-sm font-bold text-sun-700 ring-1 ring-sun-200 transition hover:bg-sun-100"
+              className="flex items-center gap-1.5 rounded-full bg-brand-50 py-1.5 pr-2 pl-3.5 text-sm font-bold text-brand-700 ring-1 ring-brand-200 transition hover:bg-brand-100"
             >
               {a.label}
               <Glyph icon={X} size={14} strokeWidth={2.6} />
@@ -132,7 +132,7 @@ export function Inventory() {
 
         {results.length === 0 && (
           <div className="mx-auto mt-4 flex max-w-md flex-col items-center rounded-[3rem] bg-white p-10 text-center shadow-soft">
-            <span className="grid size-16 place-items-center rounded-full bg-sun-50 text-sun-600">
+            <span className="grid size-16 place-items-center rounded-full bg-brand-50 text-brand-600">
               <Glyph icon={SearchX} size={30} />
             </span>
             <p className="mt-4 font-display text-lg font-bold text-ink">{t.inventory.empty}</p>
