@@ -20,7 +20,7 @@ export function Tilt({ children, className = "", max = 10, glare = true }: TiltP
   const rotateY = useSpring(useTransform(px, [0, 1], [-max, max]), spring);
   const gx = useTransform(px, (v) => `${v * 100}%`);
   const gy = useTransform(py, (v) => `${v * 100}%`);
-  const glareBg = useMotionTemplate`radial-gradient(circle at ${gx} ${gy}, rgb(255 255 255 / 0.45), transparent 55%)`;
+  const glareBg = useMotionTemplate`radial-gradient(circle at ${gx} ${gy}, rgb(255 255 255 / 0.28), transparent 50%)`;
 
   function onMove(e: PointerEvent<HTMLDivElement>) {
     if (e.pointerType !== "mouse") return;

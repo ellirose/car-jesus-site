@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useMemo, useState } from "react";
 import type { BodyType } from "./inventory";
+import { scrollToId } from "./smooth-scroll";
 
 export type Filters = {
   brand: string | null;
@@ -33,7 +34,7 @@ export function SearchProvider({ children }: { children: React.ReactNode }) {
       reset: () => set(empty),
       searchAndGo: (patch) => {
         setFilters(patch);
-        document.getElementById("inventario")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        scrollToId("inventario");
       },
     };
   }, [filters]);

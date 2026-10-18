@@ -1,36 +1,71 @@
-import { Reveal } from "./Reveal";
+"use client";
+
+import { motion } from "motion/react";
+import { Reveal, easeOutExpo } from "./Reveal";
 
 type SectionHeadingProps = {
   eyebrow: string;
   title: string;
   subtitle?: string;
   align?: "center" | "left";
-  tone?: "sun" | "azure";
+  tone?: "brand" | "aqua";
   className?: string;
 };
 
-export function SectionHeading({ eyebrow, title, subtitle, align = "center", tone = "sun", className = "" }: SectionHeadingProps) {
+/** Eyebrow with a hairline rule, a title that rises word by word, and an optional lead. */
+export function SectionHeading({ eyebrow, title, subtitle, align = "center", tone = "brand", className = "" }: SectionHeadingProps) {
   const centered = align === "center";
+  const words = title.split(" ");
+  const accent = tone === "brand" ? "text-brand-600" : "text-aqua-600";
+  const rule = tone === "brand" ? "bg-brand-400" : "bg-aqua-500";
+
   return (
-    <Reveal className={`${centered ? "mx-auto text-center" : ""} max-w-3xl ${className}`}>
-      <span
-        className={`inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-bold tracking-[0.18em] uppercase shadow-soft ring-1 ${
-          tone === "sun"
-            ? "bg-sun-50 text-sun-700 ring-sun-200/70"
-            : "bg-azure-50 text-azure-600 ring-azure-100"
-        }`}
-      >
-        <span className={`size-1.5 rounded-full ${tone === "sun" ? "bg-sun-500" : "bg-azure-500"}`} />
-        {eyebrow}
-      </span>
-      <h2 className="mt-5 font-display text-[clamp(2rem,4.2vw,3.5rem)] leading-[1.05] font-bold tracking-tight text-balance text-ink">
-        {title}
+    <div className={`${centered ? "mx-auto text-center" : ""} max-w-3xl ${className}`}>
+      <Reveal blur={false} y={12}>
+        <span className={`inline-flex items-center gap-3 text-xs font-bold tracking-[0.24em] uppercase ${accent}`}>
+          <motion.span
+            className={`h-px w-10 origin-left ${rule}`}
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: easeOutExpo }}
+          />
+          {eyebrow}
+          {centered && (
+            <motion.span
+              className={`h-px w-10 origin-right ${rule}`}
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, ease: easeOutExpo }}
+            />
+          )}
+        </span>
+      </Reveal>
+      <h2 className="mt-5 font-display text-[clamp(2rem,4.2vw,3.5rem)] leading-[1.08] font-semibold tracking-[-0.025em] text-balance text-ink">
+        {words.map((word, i) => (
+          <span key={`${word}-${i}`}>
+            <span className="inline-block overflow-hidden pb-[0.08em] align-bottom">
+              <motion.span
+                className="inline-block"
+                initial={{ y: "105%", opacity: 0, filter: "blur(6px)" }}
+                whileInView={{ y: "0%", opacity: 1, filter: "blur(0px)" }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 1, delay: 0.05 + i * 0.045, ease: easeOutExpo }}
+              >
+                {word}
+              </motion.span>
+            </span>{" "}
+          </span>
+        ))}
       </h2>
       {subtitle && (
-        <p className={`mt-5 text-lg leading-relaxed text-pretty text-ink-soft ${centered ? "mx-auto max-w-2xl" : "max-w-2xl"}`}>
-          {subtitle}
-        </p>
+        <Reveal delay={0.25} y={16}>
+          <p className={`mt-5 text-lg leading-relaxed text-pretty text-ink-soft ${centered ? "mx-auto max-w-2xl" : "max-w-2xl"}`}>
+            {subtitle}
+          </p>
+        </Reveal>
       )}
-    </Reveal>
+    </div>
   );
 }
