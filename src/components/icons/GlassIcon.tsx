@@ -36,7 +36,7 @@ export function GlassIcon({ icon, tone = "brand", className = "size-24", draw = 
   const raw = useId().replace(/[^a-zA-Z0-9]/g, "");
   const id = (name: string) => `${name}-${raw}`;
   const [plateColor, accent] = tones[tone];
-  const plateFill = inverted ? "#ffffff" : plateColor;
+  const plateFill = inverted ? "#7edfe3" : plateColor;
   const plate = (
     <g transform="rotate(12 61 35)">
       <rect x="34" y="8" width="54" height="54" rx="18" fill={plateFill} />

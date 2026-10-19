@@ -44,7 +44,7 @@ export function Inventory() {
   ].filter(Boolean) as { label: string; clear: () => void }[];
 
   return (
-    <section id="inventario" className="relative isolate py-20 lg:py-28">
+    <section id="inventario" className="relative isolate pt-6 pb-8 lg:pt-10 lg:pb-12">
       {/* the wave divider above pours the canvas into this white section */}
       <div aria-hidden className="absolute inset-0 -z-10 bg-white" />
       <div className="container-x">

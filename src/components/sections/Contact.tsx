@@ -78,7 +78,7 @@ export function Contact() {
     "w-full rounded-2xl bg-canvas px-5 py-4 text-[15px] font-semibold text-ink ring-1 ring-line transition outline-none placeholder:font-medium placeholder:text-ink-mute focus:bg-white focus:ring-2 focus:ring-brand-400";
 
   return (
-    <section id="contacto" className="relative isolate overflow-hidden py-20 lg:py-32">
+    <section id="contacto" className="relative isolate overflow-hidden pt-6 pb-12 lg:pt-10 lg:pb-16">
       <div aria-hidden className="absolute inset-0 -z-10 bg-mist" />
       <div className="container-x grid gap-14 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
         <div>

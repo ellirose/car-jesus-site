@@ -13,7 +13,7 @@ export function SellCar() {
   const { t } = useI18n();
 
   return (
-    <section id="vender" className="relative isolate overflow-hidden pt-12 pb-20 lg:pt-16 lg:pb-28">
+    <section id="vender" className="relative isolate overflow-hidden pt-4 pb-20 lg:pt-6 lg:pb-28">
       <div aria-hidden className="absolute inset-0 -z-10 bg-mist" />
 
       <div className="container-x grid items-center gap-16 lg:grid-cols-2 lg:gap-20">
